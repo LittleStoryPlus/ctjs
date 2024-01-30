@@ -32,13 +32,13 @@ jobs:
         run: ./gradlew --no-daemon build
 
       # TODO: Uncomment when we care about publishing artifacts
-      # - name: Get Short SHA
-      #   id: sha
-      #   run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Get Short SHA
+        id: sha
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
-      # - name: Publish Artifacts
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: ChatTriggers-artifacts-${{ steps.sha.outputs.sha_short }}
-      #     path: |
-      #       build/libs/*
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ChatTriggers-artifacts-${{ steps.sha.outputs.sha_short }}
+          path: |
+            build/libs/*
